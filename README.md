@@ -6,15 +6,7 @@ structures.h contains all data-structures and contains the #define
 variables. There are many shared memory segments and the program relies on 
 all of them to run.
 
-IMPORTANT NOTE(S): 
-STRANGE IMPLEMENTATION(S) - There is a bit of code in OSS that reads something
-along the lines of lastLine = null alot. This is to keep OSS from logging a deadlock 
-check tons of times at the end of the program execution. The last child seems to clean up
-really slowly, and OSS just logs a ton of deadlock checks that do nothing (because there is)
-no children in the blocked queue, until the final child cleans and lets OSS know. To prevent this
-OSS is not allowed to log that it's doing a deadlock check multiple times sequentially if it has done
-nothing else (AKA if lastLine != null then no log deadlock). Didn't affect the run in any way, just removes 
-the extraneous lines from the log file that would have cluttered the end and added more lines than needed.
+# Notes
 
 Inside of the log file, there are a few different messages that can appear.
 The first of them is a resource request message, which looks like this:
